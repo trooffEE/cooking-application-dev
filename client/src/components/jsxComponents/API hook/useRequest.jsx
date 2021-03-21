@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
-import API from '../../../api/api';
+import { useContext, useEffect, useState } from "react";
+import API from "../../../api/api";
+import testAPI from "../../../api/testApi";
+import { ApiContext } from "../../../App";
 
-const useRequest = (dataPath, method = "GET") => {
-    const [data, setData] = useState(null);
-    const api = new API();
+const useRequest = (dataPath, callback) => {
+  const [data, setData] = useState(null);
 
-    useEffect(() => {
-        api.getData(dataPath)
-            .then(res => console.log(res))
-            // .then((res) => setData(res))
-            .catch(err => console.log(err.message));
-    }, [dataPath]);
+  const isDevMode = useContext(ApiContext);
 
-    return data;
-}
+  const api = isDevMode ? new testAPI() : new API;
 
+  useEffect(() => {
+    let mounted = false;
+    api.getData(dataPath).then((res) => !mounted && setData(callback(res)));
+    return () => (mounted = true);
+  }, [dataPath]);
+
+  return data;
+};
 
 export default useRequest;

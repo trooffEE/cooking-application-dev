@@ -1,17 +1,19 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { Grid } from "../../../styledComponents/HandyComponents/HandyComponents";
-import useRequest from "../../API hook/useRequest";
 import RecipeItem from "./RecipeItem/RecipeItem";
 
-const RecipesResult = ({resultLink}) => {
-  const [recipes, setRecipes] = useState([]);
-  const data = useCallback(useRequest(resultLink), [resultLink]);
-
-  // console.log(data);
+const RecipesResult = ({ isLoading, recipes }) => {
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
   
-  return <Grid>
-    <RecipeItem />
-  </Grid>;
+  const RecipeItems = recipes.map(item => <RecipeItem key={item.id} id={item.id} image={item.image} title={item.title}/>);
+
+  return (
+    <Grid>
+      {RecipeItems}
+    </Grid>
+  );
 };
 
 export default RecipesResult;

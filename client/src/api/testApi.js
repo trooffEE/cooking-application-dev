@@ -1,11 +1,7 @@
 import * as axiosModule from 'axios';
-require('dotenv').config(); 
 
 const axios = axiosModule.create({
-  baseURL: 'https://api.spoonacular.com',
-  params: {
-    "apiKey": "3e42d004365f47ada7f1d292220161e1"
-  },
+  baseURL: 'https://jsonplaceholder.typicode.com',
 });
 
 export default class API {

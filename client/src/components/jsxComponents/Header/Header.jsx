@@ -7,13 +7,13 @@ import { HeaderStyle } from "../../styledComponents/Header/HeaderStyles";
 import Wrapper from "../HandyComponents/Wrapper/Wrapper";
 import Navigation from "./Navigation/Navigation";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <HeaderStyle>
       <Wrapper>
         <CakeLayout>
           <Row>
-            <Navigation />
+            <Navigation {...props}/>
           </Row>
         </CakeLayout>
       </Wrapper>

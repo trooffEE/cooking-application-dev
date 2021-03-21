@@ -1,15 +1,17 @@
 import React from "react";
 import { RecipesStyles } from "../../styledComponents/Recipes/ExternalRecipes/ExternalRecipes";
-import RecipesResult from "./RecipesResult/RecipesResult";
 import RecipesSearchBlock from "./RecipesSearchBlock/RecipesSearchBlock";
 import RecipesBriefInfo from "./RecipesBriefInfo/RecipesBriefInfo";
+import PaginationContainer from "../Pagination/PagintaionContainer/PaginationContainer";
+import RecipesResultContainer from "./RecipesResult/RecipesResultContainer";
 
 const Recipes = (props) => {
   return (
     <RecipesStyles>
       <RecipesBriefInfo />
       <RecipesSearchBlock />
-      <RecipesResult resultLink={"/recipes/complexSearch?query=pasta&maxFat=25&number=2"}/>
+      <PaginationContainer />
+      <RecipesResultContainer />
     </RecipesStyles>
   );
 };
