@@ -4,7 +4,7 @@ import AddingRecipe from "./AddingRecipe/AddingRecipe";
 import Recipes from "./ExternalRecipes/Recipes";
 import Hero from "./Hero/Hero";
 import Login from "./LoginSection/Login";
-import YourRecipes from "./YourRecipes/YourRecipes";
+import YourRecipesContainer from "./YourRecipes/YourRecipesContainer";
 
 const Content = ({ isLoggedIn }) => {
   return (
@@ -18,7 +18,7 @@ const Content = ({ isLoggedIn }) => {
           />
           <Route path="/recipes" component={Recipes} />
           <Route path="/your-recipes/add" component={AddingRecipe} />
-          <Route path="/your-recipes" component={YourRecipes} />
+          <Route path="/your-recipes" component={YourRecipesContainer} />
           <Route path="/login" component={Login} />
           <Redirect to="/" />
         </Switch>

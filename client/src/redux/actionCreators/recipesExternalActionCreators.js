@@ -9,6 +9,8 @@ const {
   SET_CURRENT_PAGE,
   SET_LOADING_STATUS,
   SET_CURRENT_VIEWABLE_RECIPES,
+  SET_TITLE_NEW_RECIPE,
+  SET_DESCRIPTION_NEW_RECIPE
 } = REDUCER_TYPES;
 
 export const setSearchInputValue = (value) => ({
@@ -31,6 +33,16 @@ export const setViewableRecipes = (recipes) => ({
   recipes,
 });
 
+export const setCurrentNewRecipeTitle = (title) => ({
+  type: SET_TITLE_NEW_RECIPE,
+  title,
+});
+
+export const setCurrentNewRecipeDescription = (description) => ({
+  type: SET_DESCRIPTION_NEW_RECIPE,
+  description,
+});
+
 export const setViewableRecipesAsync = (link) => {
   return (dispatch, getState) => {
     const devMode = getState().recipeReducer.isDevMode;
@@ -48,3 +60,5 @@ export const setViewableRecipesAsync = (link) => {
       .catch((err) => console.log(err.message));
   };
 };
+
+

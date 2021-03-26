@@ -6,7 +6,7 @@ export const RecipeItemStyled = styled.figure`
   flex-direction: column;
   justify-content: space-between;
   background-color: ${(props) => props.theme.mainGreen};
-  border-radius: 12px;
+  border-radius: 6px;
 `;
 
 export const RecipeItemCaption = styled.figcaption`

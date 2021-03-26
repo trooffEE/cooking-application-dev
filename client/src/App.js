@@ -18,12 +18,12 @@ function App() {
     <ApiContext.Provider value={isDevMode}>
       <ThemeProvider theme={colors}>
         <AppStyle>
-          <Header isLoggedIn={isLoggedIn}/>
-          <main>
-            <Wrapper>
-              <Content isLoggedIn={isLoggedIn}/>
-            </Wrapper>
-          </main>
+          <Header isLoggedIn={isLoggedIn} />
+          <Wrapper>
+            <main>
+              <Content isLoggedIn={isLoggedIn} />
+            </main>
+          </Wrapper>
         </AppStyle>
       </ThemeProvider>
     </ApiContext.Provider>

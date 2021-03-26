@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setViewableRecipesAsync,
@@ -22,7 +22,7 @@ const RecipesResultContainer = () => {
 
   useEffect(() => {
     dispatch(setViewableRecipesAsync(link));
-  }, [link]);
+  }, [link, dispatch]);
 
   return <RecipesResult isLoading={isLoading} recipes={recipes} />;
 };

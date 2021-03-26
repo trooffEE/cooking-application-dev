@@ -4,6 +4,6 @@ import thunk from 'redux-thunk';
 
 const store = createStore(combinedReducers, {}, applyMiddleware(thunk));
 
-window.store = store.getState();
+window.store = store;
 
 export default store;

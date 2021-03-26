@@ -4,6 +4,11 @@ export const WrapperStyle = styled.div`
   max-width: 1300px;
   margin: 0 auto;
   width: 100%;
+  padding: 0 20px;
+
+  & main {
+    min-height: calc(100vh - 50px);
+  }
 `;
 
 export const AppStyle = styled.div`

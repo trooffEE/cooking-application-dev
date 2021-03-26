@@ -9,6 +9,7 @@ export const HeaderStyle = styled.nav`
   align-items: center;
   color: white;
   background-color: #83b551;
+  z-index: 9999;
 `;
 
 export const NavigationStyles = styled.div`
