@@ -20,7 +20,6 @@ const AddingRecipe = () => {
 
   const onChange = (onChangeCallback) => (value) => {
     dispatch(onChangeCallback(value));
-    console.log(currentTitle);
   };
 
   return (

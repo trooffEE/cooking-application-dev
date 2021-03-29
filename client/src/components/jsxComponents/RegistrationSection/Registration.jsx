@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  StyledForm,
-} from "../../styledComponents/FormRelatedComponents/FormRelatedComponents";
+import { StyledForm } from "../../styledComponents/FormRelatedComponents/FormRelatedComponents";
 import { Formik } from "formik";
-import LoginFields from "./LoginFields";
+import LoginFields from "../LoginSection/LoginFields";
 
-const Login = (props) => {
-
+const Registration = (props) => {
   return (
     <StyledForm>
       <Formik
@@ -21,7 +18,7 @@ const Login = (props) => {
       >
         {(props) => {
           return (
-            <LoginFields {...props}/>
+            <LoginFields {...props} isRegis={true}/>
           );
         }}
       </Formik>
@@ -29,4 +26,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Registration;

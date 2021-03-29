@@ -2,6 +2,7 @@ import { Field, Form } from "formik";
 import React from "react";
 import { StyledButton } from "../../styledComponents/FormRelatedComponents/FormRelatedComponents";
 import FieldCustom from "../HandyComponents/Field/Field";
+import { Link } from "react-router-dom";
 
 const LoginFields = (props) => {
   console.log(props);
@@ -30,6 +31,8 @@ const LoginFields = (props) => {
 
   return (
     <Form>
+      {props.isRegis ? <h1>Registration</h1> : null}
+
       <Field name="email" validate={validateEmail}>
         {(props) => <FieldCustom type="email" title="Email" {...props}/>}
       </Field>
@@ -41,6 +44,7 @@ const LoginFields = (props) => {
       <StyledButton disabled={props.isSubmitting}>
         Submit
       </StyledButton>
+      {props.isRegis ? null : <p>If you aren't registrated - <Link to="/registration">click here!</Link></p>}
     </Form>
   );
 };

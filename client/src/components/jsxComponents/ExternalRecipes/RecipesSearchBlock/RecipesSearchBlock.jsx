@@ -4,7 +4,7 @@ import {
   StyledInputContainerSearch,
   StyledButton,
 } from "../../../styledComponents/FormRelatedComponents/FormRelatedComponents";
-import { setSearchInputValue } from "../../../../redux/actionCreators/recipesExternalActionCreators";
+import { setSearchInputValue, setViewableRecipesAsync } from "../../../../redux/actionCreators/recipesExternalActionCreators";
 import { Columns } from "../../../styledComponents/HandyComponents/HandyComponents";
 
 const RecipesSearchBlock = (props) => {
@@ -17,9 +17,12 @@ const RecipesSearchBlock = (props) => {
     dispatch(setSearchInputValue(value));
   };
 
+  const handleClick = () => {
+    dispatch(setViewableRecipesAsync(`/recipes/complexSearch?&number=20&titleMatch=${text}`));
+  }
+
   return (
     <StyledInputContainerSearch>
-      <form action="GET">
         <Columns template={[5, 1]} gap={10}>
           <input
             type="text"
@@ -28,9 +31,8 @@ const RecipesSearchBlock = (props) => {
             ref={input}
             required={true}
           />
-          <StyledButton>Find!</StyledButton>
+          <StyledButton onClick={handleClick}>Find!</StyledButton>
         </Columns>
-      </form>
     </StyledInputContainerSearch>
   );
 };

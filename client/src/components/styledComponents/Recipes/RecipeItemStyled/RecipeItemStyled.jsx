@@ -15,9 +15,9 @@ export const RecipeItemCaption = styled.figcaption`
   justify-content: center;
   text-align: center;
   color: white;
-  font-size: 1.25rem;
-  padding: 10px 10px 5px 5px;
-  height: 100%;
+  font-size: 1.1rem;
+  padding: 5px 5px 5px 5px;
+  min-height: 50px;
 `;
 
 export const RecipeItemButton = styled.button`

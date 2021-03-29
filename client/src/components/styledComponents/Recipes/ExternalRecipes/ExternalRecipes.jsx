@@ -9,4 +9,18 @@ export const RecipesStyles = styled.div`
     font-size: 1.2rem;
     margin: 20px 0;
   }
+
+  & .fallback-message {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  & .fallback-query {
+    color: white;
+    background-color: ${props => props.theme.mainGreen};
+    border-radius: 10px;
+    display: inline-block;
+  }
 `;

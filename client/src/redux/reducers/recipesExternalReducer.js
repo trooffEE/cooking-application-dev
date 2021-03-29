@@ -7,6 +7,7 @@ const {
   SET_CURRENT_VIEWABLE_RECIPES,
   SET_TITLE_NEW_RECIPE,
   SET_DESCRIPTION_NEW_RECIPE,
+  SET_MAXIMUM_RECIPES
 } = REDUCER_TYPES;
 
 const initState = {
@@ -18,8 +19,8 @@ const initState = {
   isLoading: true,
   isDevMode: false,
   newRecipe: {
-    title: "!",
-    description: "!!",
+    title: "",
+    description: "",
   },
 };
 
@@ -41,6 +42,12 @@ export default function recipeReducer(state = initState, action) {
       return {
         ...state,
         newRecipe: { ...state.newRecipe, title: action.title },
+      };
+
+    case SET_MAXIMUM_RECIPES:
+      return {
+        ...state,
+        maxRecipes: action.maxRecipes,
       };
 
     case SET_DESCRIPTION_NEW_RECIPE:

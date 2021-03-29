@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Form } from "formik";
 
 export const StyledInputContainerSearch = styled.div`
   display: flex;
@@ -10,7 +9,7 @@ export const StyledInputContainerSearch = styled.div`
   margin: 0 auto;
   padding: 0 30px;
 
-  & form {
+  & > div {
     width: 100%;
   }
 
@@ -75,6 +74,15 @@ export const StyledForm = styled.div`
     border-bottom: 2px solid ${(props) => props.theme.mainGreen};
     font-family: "Hind", sans-serif;
     outline: none;
+  }
+  
+  & a {
+    font-style: italic;
+    text-decoration: underline;
+  }
+
+  & h1 {
+    margin: 0;
   }
 
   & input::selection {

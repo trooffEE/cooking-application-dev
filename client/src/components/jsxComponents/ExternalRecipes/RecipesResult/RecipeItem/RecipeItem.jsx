@@ -5,7 +5,7 @@ import {
   RecipeItemStyled,
 } from "../../../../styledComponents/Recipes/RecipeItemStyled/RecipeItemStyled";
 
-const RecipeItem = ({ title, image }) => {
+const RecipeItem = ({ title, image}) => {
   let [hovered, setHovered] = useState(false);
 
   const handleMouseEnter = () => {

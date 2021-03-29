@@ -10,7 +10,8 @@ const {
   SET_LOADING_STATUS,
   SET_CURRENT_VIEWABLE_RECIPES,
   SET_TITLE_NEW_RECIPE,
-  SET_DESCRIPTION_NEW_RECIPE
+  SET_DESCRIPTION_NEW_RECIPE,
+  SET_MAXIMUM_RECIPES
 } = REDUCER_TYPES;
 
 export const setSearchInputValue = (value) => ({
@@ -43,6 +44,11 @@ export const setCurrentNewRecipeDescription = (description) => ({
   description,
 });
 
+export const setMaxRecipes = (maxRecipes) => ({
+  type: SET_MAXIMUM_RECIPES,
+  maxRecipes,
+});
+
 export const setViewableRecipesAsync = (link) => {
   return (dispatch, getState) => {
     const devMode = getState().recipeReducer.isDevMode;
@@ -53,6 +59,7 @@ export const setViewableRecipesAsync = (link) => {
       .getData(link)
       .then((res) => {
         batch(() => {
+          dispatch(setMaxRecipes(res.data.totalResults));
           dispatch(setViewableRecipes(res.data.results));
           dispatch(setLoadingStatus(false));
         });
