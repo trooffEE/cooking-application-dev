@@ -16,10 +16,7 @@ const YourRecipeItem = ({ title, imageUrl, desc }) => {
         <StyledYourRecipeDescription>
           <h2>{title}</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-            temporibus eaque dignissimos aperiam amet beatae labore facilis?
-            Repellat perferendis autem inventore earum recusandae cum iusto,
-            facere pariatur, dignissimos ullam veritatis.
+            {desc}
           </p>
           <YourRecipeButtons />
         </StyledYourRecipeDescription>

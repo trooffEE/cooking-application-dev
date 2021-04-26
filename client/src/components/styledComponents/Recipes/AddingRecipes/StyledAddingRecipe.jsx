@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledAddingNewRecipe = styled.div`
+export const StyledAddingNewRecipe = styled.form`
   margin-top: 20px;
   display: flex;
   flex-direction: column;

@@ -7,6 +7,7 @@ const {
   SET_IS_VALIDATION_STATUS,
   SET_IS_VALID_LOGIN,
   SET_IS_VALID_PASSWORD,
+  SET_CURRENT_USER,
 } = REDUCER_TYPES;
 
 export const setLoginValue = (login) => ({
@@ -29,7 +30,14 @@ export const setIsLoginValid = (isPassLogin) => ({
   isPassLogin,
 });
 
-export const setIsPasswordValid  = (isPassPassword) => ({
+export const setIsPasswordValid = (isPassPassword) => ({
   type: SET_IS_VALID_PASSWORD,
   isPassPassword,
 });
+
+export const setCurrentUser = (decoded) => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded,
+  };
+};

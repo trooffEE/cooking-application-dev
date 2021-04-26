@@ -5,7 +5,7 @@ import FieldCustom from "../HandyComponents/Field/Field";
 import { Link } from "react-router-dom";
 
 const LoginFields = (props) => {
-  console.log(props);
+
   const validateEmail = (email) => {
     const error = {};
 
@@ -19,7 +19,7 @@ const LoginFields = (props) => {
 
   const validatePassword = (password) => {
     const error = {};
-    const passwordRegex = /^[A-Za-z]\w{7,14}$/;
+    const passwordRegex = /^[A-Za-z]\w{6,14}$/;
 
     if (!password)
       error.password = "Required"
@@ -31,13 +31,13 @@ const LoginFields = (props) => {
 
   return (
     <Form>
-      {props.isRegis ? <h1>Registration</h1> : null}
+      {props.isRegis && <h1>Registration</h1>}
 
-      <Field name="email" validate={validateEmail}>
+      <Field name="email">
         {(props) => <FieldCustom type="email" title="Email" {...props}/>}
       </Field>
       
-      <Field name="password" validate={validatePassword}>
+      <Field name="password">
         {(props) => <FieldCustom type="password" title="Password" {...props}/>}
       </Field>
 

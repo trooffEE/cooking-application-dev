@@ -7,8 +7,13 @@ import { NavigationStyles } from "../../../styledComponents/Header/HeaderStyles"
 import { Link } from "react-router-dom";
 import NavigationLoggedIn from "./NavigationLoggedIn/NavigationLoggedIn";
 import NavigationNotLoggedIn from "./NavigationNotLoggedIn/NavigationNotLoggedIn";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../../../redux/reducers/loginReducer";
 
 const Navigation = ({ isLoggedIn }) => {
+
+  const dispatch = useDispatch();
+
   return (
     <Columns amount={2} gap={30}>
       <ColumnItem>
@@ -17,9 +22,9 @@ const Navigation = ({ isLoggedIn }) => {
         </NavigationStyles>
       </ColumnItem>
       <NavigationStyles>
-        <Link to="/login" className="login-link">
+        {!isLoggedIn ? <Link to="/login" className="login-link">
           <span>Login</span>
-        </Link>
+        </Link> : <Link to="/" onClick={() => dispatch(logoutUser())}><span>Logout</span></Link> }
       </NavigationStyles>
     </Columns>
   );

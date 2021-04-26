@@ -7,7 +7,6 @@ const FieldCustom = ({
   type = "text",
   ...props
 }) => {
-  console.log(error, touched);
 
   return (
     <label>

@@ -4,9 +4,11 @@ import {
 } from "../../styledComponents/FormRelatedComponents/FormRelatedComponents";
 import { Formik } from "formik";
 import LoginFields from "./LoginFields";
+import { loginUser } from "../../../redux/reducers/loginReducer";
+import { useDispatch } from "react-redux";
 
 const Login = (props) => {
-
+  const dispatch = useDispatch();
   return (
     <StyledForm>
       <Formik
@@ -16,6 +18,7 @@ const Login = (props) => {
         }}
         onSubmit={(values, actions) => {
           actions.setSubmitting(false);
+          dispatch(loginUser(values, props.history));
         }}
         validateOnBlur
       >

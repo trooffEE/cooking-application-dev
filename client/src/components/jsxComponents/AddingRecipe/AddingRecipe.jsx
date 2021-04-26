@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,7 +10,7 @@ import { StyledAddingNewRecipe } from "../../styledComponents/Recipes/AddingReci
 import DescriptionNewRecipe from "./DescriptionNewRecipe/DescriptionNewRecipe";
 import TitleNewRecipe from "./TitleNewRecipe/TitleNewRecipe";
 
-const AddingRecipe = () => {
+const AddingRecipe = (props) => {
   const currentTitle = useSelector(
     (state) => state.recipeReducer.newRecipe.title
   );
@@ -22,8 +23,26 @@ const AddingRecipe = () => {
     dispatch(onChangeCallback(value));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // the only validation :P
+    if (currentTitle === "" || currentDescription === "") {
+      return;
+    }
+
+    axios
+      .post("/your-recipes/add", {
+        title: currentTitle,
+        description: currentDescription,
+      })
+      .then((res) => {
+        props.history.push("/your-recipes");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <StyledAddingNewRecipe>
+    <StyledAddingNewRecipe onSubmit={handleSubmit}>
       <TitleNewRecipe
         title="Title for new Recipe!"
         value={currentTitle}
