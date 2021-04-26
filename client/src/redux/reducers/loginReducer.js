@@ -1,5 +1,5 @@
 import REDUCER_TYPES from "../actionTypes/loginActionTypes";
-import isEmpty from 'is-empty';
+import isEmpty from "is-empty";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../../utils/setAuthToken";
@@ -11,10 +11,11 @@ const {
   SET_IS_VALIDATION_STATUS,
   SET_IS_VALID_LOGIN,
   SET_IS_VALID_PASSWORD,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
 } = REDUCER_TYPES;
 
 const initState = {
+  userID: null,
   isLoggedIn: false,
   isPassValidation: false,
   isPassLogin: false,
@@ -41,7 +42,11 @@ export default function loginReducer(state = initState, action) {
       return { ...state, isPassPassword: action.isPassPassword };
 
     case SET_CURRENT_USER:
-      return { ...state, isLoggedIn: !isEmpty(action.payload) };
+      return {
+        ...state,
+        isLoggedIn: !isEmpty(action.payload),
+        userID: action.payload.id,
+      };
 
     default:
       return state;
@@ -71,11 +76,11 @@ export const loginUser = (userData, history) => {
         localStorage.setItem("jwtToken", token);
         // Set token to Auth header
         setAuthToken(token);
-        console.log("strike!");
         // Decode token to get user data
         const decoded = jwt_decode(token);
         // Set current user
         dispatch(setCurrentUser(decoded));
+        console.log(decoded);
         history.push("/");
       })
       .catch((err) => {
@@ -85,7 +90,7 @@ export const loginUser = (userData, history) => {
 };
 
 // Log user out
-export const logoutUser = () => dispatch => {
+export const logoutUser = () => (dispatch) => {
   // Remove token from local storage
   localStorage.removeItem("jwtToken");
   // Remove auth header for future requests

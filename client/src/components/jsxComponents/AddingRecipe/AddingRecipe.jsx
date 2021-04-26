@@ -17,6 +17,9 @@ const AddingRecipe = (props) => {
   const currentDescription = useSelector(
     (state) => state.recipeReducer.newRecipe.description
   );
+
+  const userID = useSelector((state) => state.loginReducer.userID);
+
   const dispatch = useDispatch();
 
   const onChange = (onChangeCallback) => (value) => {
@@ -34,6 +37,7 @@ const AddingRecipe = (props) => {
       .post("/your-recipes/add", {
         title: currentTitle,
         description: currentDescription,
+        idOwner: userID
       })
       .then((res) => {
         props.history.push("/your-recipes");

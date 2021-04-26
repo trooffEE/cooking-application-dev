@@ -8,7 +8,7 @@ import {
 import bcg from "../../../../assets/food-background.jpg";
 import YourRecipeButtons from "./YourRecipeButtons/YourRecipeButtons";
 
-const YourRecipeItem = ({ title, imageUrl, desc }) => {
+const YourRecipeItem = ({ title, imageUrl, desc, id }) => {
   return (
     <Row>
       <StyledYourRecipeItem>
@@ -18,7 +18,7 @@ const YourRecipeItem = ({ title, imageUrl, desc }) => {
           <p>
             {desc}
           </p>
-          <YourRecipeButtons />
+          <YourRecipeButtons id={id}/>
         </StyledYourRecipeDescription>
       </StyledYourRecipeItem>
     </Row>
